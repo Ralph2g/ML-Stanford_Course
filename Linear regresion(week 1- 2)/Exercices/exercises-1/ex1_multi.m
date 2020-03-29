@@ -105,18 +105,12 @@ fprintf('\n');
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
 temp = [ 1650, 3];
-disp(sigma)
-disp(mu)
 for i =1 :size(temp,2)
     temp(1,i) = ( ( temp(1,i)-mu(1,i) )/sigma(1,i) );
 end
 temp = [1, temp];
-disp(temp)
 price = temp*theta; % You should change this
-
-
 % ============================================================
-
 fprintf(['Predicted price of a 1650 sq-ft, 3 br house ' ...
          '(using gradient descent):\n $%f\n'], price);
 
@@ -157,7 +151,7 @@ fprintf('\n');
 
 % Estimate the price of a 1650 sq-ft, 3 br house
 % ====================== YOUR CODE HERE ======================
-price = 0; % You should change this
+price = [1, 1650, 3]*theta; % You should change this
 
 
 % ============================================================

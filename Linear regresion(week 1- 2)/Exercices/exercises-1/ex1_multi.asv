@@ -105,14 +105,8 @@ fprintf('\n');
 % Recall that the first column of X is all-ones. Thus, it does
 % not need to be normalized.
 temp = [ 1650, 3];
-disp(sigma)
-disp(mu)
-for i =1 :size(temp,2)
-    temp(1,i) = ( ( temp(1,i)-mu(1,i) )/sigma(1,i) );
-end
-temp = [1, temp];
-disp(temp)
-price = temp*theta; % You should change this
+
+price = *theta; % You should change this
 
 
 % ============================================================

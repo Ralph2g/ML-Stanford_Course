@@ -25,7 +25,7 @@ sigma = zeros(1, size(X, 2));%1x2
 % Hint: You might find the 'mean' and 'std' functions useful.
 %       
 for i =1 :size(X,2)
-    sigma(1:i) = std(X_norm(:,i)); 
+    sigma(1,i) = std(X_norm(:,i)); 
     mu(1,i)= mean( X_norm(:,i));
     X_norm(:,i) = ( ( X_norm(:,i)-mu(1,i) )/sigma(1,i) );
 end

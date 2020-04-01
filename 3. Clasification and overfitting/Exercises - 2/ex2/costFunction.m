@@ -22,7 +22,7 @@ grad = zeros(size(theta));
 
 
 
-
+J =(1/m).*();
 
 
 

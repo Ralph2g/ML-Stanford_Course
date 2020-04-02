@@ -1,4 +1,4 @@
-function out = mapFeature(X1, X2)
+ function out = mapFeature(X1, X2)
 % MAPFEATURE Feature mapping function to polynomial features
 %
 %   MAPFEATURE(X1, X2) maps the two input features
@@ -17,5 +17,4 @@ for i = 1:degree
         out(:, end+1) = (X1.^(i-j)).*(X2.^j);
     end
 end
-
 end

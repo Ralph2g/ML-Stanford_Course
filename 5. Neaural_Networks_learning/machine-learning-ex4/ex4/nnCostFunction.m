@@ -15,10 +15,10 @@ function [J grad] = nnCostFunction(nn_params, ...
 %
 
 % Reshape nn_params back into the parameters Theta1 and Theta2, the weight matrices
-% for our 2 layer neural network
+% for our 2 layer neural network 25 x 401
 Theta1 = reshape(nn_params(1:hidden_layer_size * (input_layer_size + 1)), ...
                  hidden_layer_size, (input_layer_size + 1));
-
+%10 x 25+1
 Theta2 = reshape(nn_params((1 + (hidden_layer_size * (input_layer_size + 1))):end), ...
                  num_labels, (hidden_layer_size + 1));
 
@@ -61,22 +61,17 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
+%============PART_1=============%
+X = [ones(m,1) X];
 
+a_2 = sigmoid(X*Theta1');
+a_2 =[ones(m,1) a_2];
+h_x = sigmoid(a_2*Theta2');
+y_k = zeros(m,num_labels)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+for i = 1: m
+    y_k(i, y(i)) = 1;
+end
 
 
 

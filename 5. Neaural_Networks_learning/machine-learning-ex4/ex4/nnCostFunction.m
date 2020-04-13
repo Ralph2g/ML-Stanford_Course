@@ -63,18 +63,18 @@ Theta2_grad = zeros(size(Theta2));
 %
 %============PART_1=============%
 X = [ones(m,1) X];
-
 a_2 = sigmoid(X*Theta1');
 a_2 =[ones(m,1) a_2];
 h_x = sigmoid(a_2*Theta2');
-y_k = zeros(m,num_labels)
+y_k = zeros(m,num_labels);
 %Transformamos nuestra "y" para poderlo aplicar  en nuestra función de
 %costos
 for i = 1: m
     y_k(i, y(i)) = 1;
 end
-
-J = sum(sum( (-y_k.*log(h_x)) - ( 1-y_k ).*log(1-h_x) ))/m;
+Theta1(:,1) = [];
+Theta2(:,1) = [];
+J = (sum(sum( (-y_k.*log(h_x)) - ( 1-y_k ).*log(1-h_x) ))/m) + (lambda/(2*m))*sum(sum(Theta1.^2)) + (lambda/(2*m))*sum(sum(Theta2.^2));
 
 % -------------------------------------------------------------
 

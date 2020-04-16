@@ -62,8 +62,8 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 %============PART_1=============%
-X = [ones(m,1) X]; %5000x401
-z_2 = [ones(m,1) X*Theta1']; % 5000x26
+a_1 = [ones(m,1) X]; %5000x401
+z_2 = [ones(m,1) a_1*Theta1']; % 5000x26
 a_2 = sigmoid(z_2);%5000x26
 z_3 = a_2*Theta2';%5000x10
 h_x = sigmoid(z_3);%5000x10
@@ -85,12 +85,13 @@ delta_3 = h_x - y_k;%5000x10
 
 %hidden layer l = 2
 delta_2 = (delta_3*theta2).*sigmoidGradient(z_2);%5000x26
-delta_2 = delta_2(2:end);
-
+delta_2(:,1) = [];%5000x25
+Theta2_grad = Theta2_grad + delta_3'*a_2;%10x26
+Theta1_grad = Theta1_grad + delta_2'*a_1;%25x401
 % =========================================================================
 
 % Unroll gradients
-grad = [Theta1_grad(:) ; Theta2_grad(:)];
+grad = [Theta1_grad(:) ; Theta2_grad(:)]/m;
 
 
 end

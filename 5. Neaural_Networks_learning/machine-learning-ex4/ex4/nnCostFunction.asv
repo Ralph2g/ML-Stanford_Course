@@ -74,19 +74,20 @@ for i = 1: m
     y_k(i, y(i)) = 1;
 end
 theta1 = Theta1;
-Theta2 = Theta2
+theta2 = Theta2;
 Theta1(:,1) = [];
 Theta2(:,1) = [];
 J = (sum(sum( (-y_k.*log(h_x)) - ( 1-y_k ).*log(1-h_x) ))/m) + (lambda/(2*m))*sum(sum(Theta1.^2)) + (lambda/(2*m))*sum(sum(Theta2.^2));
 
 % -------------------------------------------------------------
 %hidden layer l = 3
-error_3 = h_x - y_k;%5000x10
+delta_3 = h_x - y_k;%5000x10
 
 %hidden layer l = 2
-error_2 = (error_3*Theta2).*sigmoidGradient(z_2);%5000x26
-
-
+delta_2 = (delta_3*theta2).*sigmoidGradient(z_2);%5000x26
+delta_2 = [delta_2(2:)]
+Theta2_grad = Theta2_grad + delta_3'*a_2;%10x26
+Theta1_grad = Theta1_grad + delta_2'*X;
 % =========================================================================
 
 % Unroll gradients

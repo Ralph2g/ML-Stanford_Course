@@ -62,21 +62,30 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 %============PART_1=============%
-X = [ones(m,1) X];
-a_2 = sigmoid(X*Theta1');
-a_2 =[ones(m,1) a_2];
-h_x = sigmoid(a_2*Theta2');
+X = [ones(m,1) X]; %5000x401
+z_2 = [ones(m,1) X*Theta1']; % 5000x26
+a_2 = sigmoid(z_2);%5000x26
+z_3 = a_2*Theta2';%5000x10
+h_x = sigmoid(z_3);%5000x10
 y_k = zeros(m,num_labels);
 %Transformamos nuestra "y" para poderlo aplicar  en nuestra función de
 %costos
 for i = 1: m
     y_k(i, y(i)) = 1;
 end
+theta1 = Theta1;
+theta2 = Theta2;
 Theta1(:,1) = [];
 Theta2(:,1) = [];
 J = (sum(sum( (-y_k.*log(h_x)) - ( 1-y_k ).*log(1-h_x) ))/m) + (lambda/(2*m))*sum(sum(Theta1.^2)) + (lambda/(2*m))*sum(sum(Theta2.^2));
 
 % -------------------------------------------------------------
+%hidden layer l = 3
+delta_3 = h_x - y_k;%5000x10
+
+%hidden layer l = 2
+delta_2 = (delta_3*theta2).*sigmoidGradient(z_2);%5000x26
+delta_2 = delta_2(2:end);
 
 % =========================================================================
 

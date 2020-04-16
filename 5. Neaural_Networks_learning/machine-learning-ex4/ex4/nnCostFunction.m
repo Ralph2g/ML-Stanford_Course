@@ -86,12 +86,16 @@ delta_3 = h_x - y_k;%5000x10
 %hidden layer l = 2
 delta_2 = (delta_3*theta2).*sigmoidGradient(z_2);%5000x26
 delta_2(:,1) = [];%5000x25
-Theta2_grad = Theta2_grad + delta_3'*a_2;%10x26
-Theta1_grad = Theta1_grad + delta_2'*a_1;%25x401
+%Regularzando
+Theta2_grad(:,1) = (Theta2_grad(:,1) + delta_3'*a_2(:,1))/m;%10x1
+Theta1_grad(:,1) = (Theta1_grad(:,1) + delta_2'*a_1(:,1))/m;%25x1
+
+Theta2_grad(:,2:end) = ( (Theta2_grad(:,2:end) + delta_3'*a_2(:,2:end)) + (lambda.*Theta2) )/m;%10x25
+Theta1_grad(:,2:end) = ( (Theta1_grad(:,2:end) + delta_2'*a_1(:,2:end)) + (lambda.*Theta1) )/m;%25x400
 % =========================================================================
 
 % Unroll gradients
-grad = [Theta1_grad(:) ; Theta2_grad(:)]/m;
+grad = [Theta1_grad(:) ; Theta2_grad(:)];
 
 
 end

@@ -22,10 +22,10 @@ h_x = X*theta;
 J = ( sum((h_x - y).^2)/(2*m) ) + (lambda/(2*m))*(theta(2:end)'*theta(2:end));
 %
 
-grad(1,:) = grad(1,:) + (X(:,1)'*(h_x - y))/m;
-grad(2:end,:) = grad(2:end,:) + ( X(:,2:end)'*(h_x - y) + lambda.*theta(2:end,:) )/m;
-%grad = (1/m)*(X'*(h_x - y));
-%grad = grad + (lambda/m)*[0;theta(2:end,:)];
+%grad(1,:) = grad(1,:) + (X(:,1)'*(h_x - y))/m;
+%grad(2:end,:) = grad(2:end,:) + ( X(:,2:end)'*(h_x - y) + lambda.*sum(theta(2:end,:)) )/m;
+grad = (1/m)*((h_x - y)'*X)';
+grad = grad + (lambda/m)*[0;theta(2:end,:)];
 % =========================================================================
 grad = grad(:);
 end

@@ -30,6 +30,17 @@ fprintf('Loading and Visualizing Data ...\n')
 % Load from ex5data1: 
 % You will have X, y, Xval, yval, Xtest, ytest in your environment
 load ('ex5data1.mat');
+X_all = [X,y;Xval,yval;Xtest,ytest];
+X_rand = X_all(randperm(size(X_all,1)),:);
+
+%X = X_rand(1:size(X,1),1);
+%Xval = X_rand(size(X,1)+1 : size(X,1) + size(Xval,1),1);
+%Xtest = X_rand(size(X,1) + size(Xval,1)+1:end,1);
+
+%y = X_rand(1:size(X,1),2);
+%yval = X_rand(size(X,1)+1 :size(X,1) + size(Xval,1),2);
+%ytest = X_rand(size(X,1) + size(Xval,1)+1:end,2);
+
 
 % m = Number of examples
 m = size(X, 1);
@@ -104,7 +115,7 @@ pause;
 %                 see a graph with "high bias" -- Figure 3 in ex5.pdf 
 %
 
-lambda = 0;
+lambda = 3;
 [error_train, error_val] = ...
     learningCurve([ones(m, 1) X], y, ...
                   [ones(size(Xval, 1), 1) Xval], yval, ...
@@ -131,6 +142,7 @@ pause;
 %
 
 p = 8;
+
 
 % Map X onto Polynomial Features and Normalize
 X_poly = polyFeatures(X, p);
@@ -164,7 +176,7 @@ pause;
 %  lambda to see how the fit and learning curve change.
 %
 
-lambda =0;
+lambda = 3 ;
 [theta] = trainLinearReg(X_poly, y, lambda);
 
 % Plot training data and fit
@@ -177,7 +189,7 @@ title (sprintf('Polynomial Regression Fit (lambda = %f)', lambda));
 
 figure(2);
 [error_train, error_val] = ...
-    learningCurve(X_poly, y, X_poly_val, yval, lambda);
+    learningCurve(X_poly, y, X_poly_test, ytest, lambda);
 plot(1:m, error_train, 1:m, error_val);
 
 title(sprintf('Polynomial Regression Learning Curve (lambda = %f)', lambda));
@@ -218,3 +230,5 @@ end
 
 fprintf('Program paused. Press enter to continue.\n');
 pause;
+
+%Haciendo uso del random%

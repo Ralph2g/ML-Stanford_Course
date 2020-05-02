@@ -1,4 +1,4 @@
-%% Machine Learning Online Class
+ %% Machine Learning Online Class
 %  Exercise 6 | Spam Classification with SVMs
 %
 %  Instructions
@@ -50,7 +50,7 @@ fprintf('\nExtracting features from sample email (emailSample1.txt)\n');
 % Extract Features
 file_contents = readFile('emailSample1.txt');
 word_indices  = processEmail(file_contents);
-features      = emailFeatures(word_indices);
+ features      = emailFeatures(word_indices);
 
 % Print Stats
 fprintf('Length of feature vector: %d\n', length(features));
@@ -126,6 +126,17 @@ pause;
 % emailSample1.txt or emailSample2.txt to see different predictions on
 % different emails types). Try your own emails as well!
 filename = 'spamSample1.txt';
+ 
+% Read and predict
+file_contents = readFile(filename);
+word_indices  = processEmail(file_contents);
+x             = emailFeatures(word_indices);
+p = svmPredict(model, x);
+
+fprintf('\nProcessed %s\n\nSpam Classification: %d\n', filename, p);
+fprintf('(1 indicates spam, 0 indicates not spam)\n\n');
+
+filename = 'spamSample2.txt';
 
 % Read and predict
 file_contents = readFile(filename);
@@ -135,4 +146,25 @@ p = svmPredict(model, x);
 
 fprintf('\nProcessed %s\n\nSpam Classification: %d\n', filename, p);
 fprintf('(1 indicates spam, 0 indicates not spam)\n\n');
+filename = 'emailSample1.txt';
+
+% Read and predict
+file_contents = readFile(filename);
+word_indices  = processEmail(file_contents);
+x             = emailFeatures(word_indices);
+p = svmPredict(model, x);
+
+fprintf('\nProcessed %s\n\nSpam Classification: %d\n', filename, p);
+fprintf('(1 indicates spam, 0 indicates not spam)\n\n');
+filename = 'emailSample2.txt';
+
+% Read and predict
+file_contents = readFile(filename);
+word_indices  = processEmail(file_contents);
+x             = emailFeatures(word_indices);
+p = svmPredict(model, x);
+
+fprintf('\nProcessed %s\n\nSpam Classification: %d\n', filename, p);
+fprintf('(1 indicates spam, 0 indicates not spam)\n\n');
+
 

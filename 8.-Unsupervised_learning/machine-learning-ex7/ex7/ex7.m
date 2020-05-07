@@ -1,4 +1,4 @@
-%% Machi   ne Learning Online Class
+%% Machi    ne Learning Online Class
 %  Exercise 7 | Principle Component Analysis and K-Means Clustering
 %
 %  Instructions
@@ -106,7 +106,7 @@ pause;
 fprintf('\nRunning K-Means clustering on pixels from an image.\n\n');
 
 %  Load an image of a bird
-A = double(imread('bird_small.png'));
+A = double(imread('retener-paciencia-trabajo.jpg '));
 
 % If imread does not work for you, you can try instead
 %   load ('bird_small.mat');

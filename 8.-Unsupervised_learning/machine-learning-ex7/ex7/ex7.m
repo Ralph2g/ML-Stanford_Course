@@ -75,7 +75,7 @@ pause;
 fprintf('\nRunning K-Means clustering on example dataset.\n\n');
 
 % Load an example dataset
-load('ex7data2.mat');
+load('foto_de_perfil.jpg');
 
 % Settings for running K-Means
 K = 3;
@@ -106,7 +106,7 @@ pause;
 fprintf('\nRunning K-Means clustering on pixels from an image.\n\n');
 
 %  Load an image of a bird
-A = double(imread('retener-paciencia-trabajo.jpg '));
+A = double(imread('foto_de_perfil.jpg'));
 
 % If imread does not work for you, you can try instead
 %   load ('bird_small.mat');

@@ -28,13 +28,14 @@ centroids = zeros(K, n);
 aux = zeros(K,1);
 for i =1 :m
     for k =1: K
+        aux =0;
         if idx(i) == k
             aux(k) =aux(k) +1;
             centroids(k,:) = centroids(k,:) + X(i,:);
         end
     end
 end
-centroids = centroids./aux;
+centroids = centroids/au
 % =============================================================
 
 

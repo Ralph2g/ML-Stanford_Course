@@ -49,7 +49,7 @@ pause;
 %  cofiCostFunc.m to return J.
 
 %  Load pre-trained weights (X, Theta, num_users, num_movies, num_features)
-load ('ex8_movieParams.mat');
+load ('ex8_movieParams.mat');  
 
 %  Reduce the data set size so that this runs faster
 num_users = 4; num_movies = 5; num_features = 3;

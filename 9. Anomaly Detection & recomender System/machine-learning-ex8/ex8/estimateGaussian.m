@@ -22,8 +22,6 @@ sigma2 = zeros(n, 1);
 %
 
 mu  = sum(X)/m;
-disp(mu);
-disp(X)
 sigma2 = (sum((X - mu).^2))/(m-1);
 
 

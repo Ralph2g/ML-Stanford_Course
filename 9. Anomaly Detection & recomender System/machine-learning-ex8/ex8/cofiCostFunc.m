@@ -47,8 +47,8 @@ Theta_grad = (((X*Theta') - Y).*R)'*X;
 
 %Regularizated
 J = sum(sum(((X*Theta' - Y).*R).^2))/2 + sum(sum(Theta.^2))*lambda*.5 + sum(sum(X.^2))*lambda*.5;
-X_grad = (((X*Theta') - Y).*R)*Theta;
-Theta_grad = (((X*Theta') - Y).*R)'*X;
+X_grad = (((X*Theta') - Y).*R)*Theta + X*lambda;
+Theta_grad = (((X*Theta') - Y).*R)'*X + Theta*lambda;
 % =============================================================
 
 grad = [X_grad(:); Theta_grad(:)];

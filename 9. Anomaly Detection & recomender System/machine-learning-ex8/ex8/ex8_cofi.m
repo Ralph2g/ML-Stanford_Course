@@ -144,7 +144,7 @@ my_ratings(69) = 5;
 my_ratings(183) = 4;
 my_ratings(226) = 5;
 my_ratings(355)= 5;
-
+my_ratings = load('rafael.txt'); 
 fprintf('\n\nNew user ratings:\n');
 for i = 1:length(my_ratings)
     if my_ratings(i) > 0 
@@ -174,6 +174,7 @@ load('ex8_movies.mat');
 %  rating to movie i
 
 %  Add our own ratings to the data matrix
+my_ratings = load('rafael.txt');
 Y = [my_ratings Y];
 R = [(my_ratings ~= 0) R];
 
